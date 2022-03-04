@@ -6,6 +6,7 @@ Pythiri is a voice command based assistant service written in Python 3.9+. It ca
 
 ## Features
 
+https://user-images.githubusercontent.com/61332730/156779820-2ed7644c-39c4-46f9-b6f8-256f1f0f2688.mp4
 * Tells the current time or date or month or day [e.g. 'tell me time or date or day or month']
 
 * Opens a web page [e.g. 'open google, 'open youtube', 'open stack overflow']
