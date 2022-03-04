@@ -30,7 +30,9 @@ import winshell as winshell                        # pip install winshell
 from geopy.geocoders import Nominatim              # pip install geopy  and pip install geocoder
 from geopy import distance
 
-engine = pyttsx3.init()
+engine = pyttsx3.init('sapi5')
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[1].id)
 
 def fun_talk(audio):
     engine.say(audio)
@@ -44,7 +46,7 @@ def wish_user():
         fun_talk("Good Afternoon !")
     else:
         fun_talk("Good Evening !")
-    fun_talk("I am P.A. , Press Enter or click listen to start")  
+    fun_talk("I am Py-siri, Press Enter or click listen to start")  
     
 def get_command():
     rec = sr.Recognizer()
