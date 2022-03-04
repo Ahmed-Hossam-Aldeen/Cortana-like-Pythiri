@@ -1,6 +1,9 @@
 # Cortana-like-python-assist
 Pythiri is a voice command based assistant service written in Python 3.9+. It can recognize human speech or voice, talk to user and execute basic commands.
 
+
+![Capture](https://user-images.githubusercontent.com/61332730/156774918-0158d98d-33c7-4dc6-b85b-421b7dbb5daa.PNG)
+
 ## Features
 
 * Tells the current time or date or month or day [e.g. 'tell me time or date or day or month']
