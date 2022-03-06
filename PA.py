@@ -2,7 +2,9 @@ from PyQt5 import QtWidgets, uic
 import sys
 from PyQt5.uic.properties import QtCore
 from PyQt5.QtGui import QPixmap
+from PyQt5.QtMultimedia import QSound
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog
+
 import pyttsx3                                     # pip install pyttsx3
 import datetime
 import speech_recognition as sr                    # pip install SpeechRecognition
@@ -29,10 +31,12 @@ from quote import quote                            # pip install quote
 import winshell as winshell                        # pip install winshell
 from geopy.geocoders import Nominatim              # pip install geopy  and pip install geocoder
 from geopy import distance
+from playsound import playsound
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
+
 
 def fun_talk(audio):
     engine.say(audio)
@@ -46,7 +50,7 @@ def wish_user():
         fun_talk("Good Afternoon !")
     else:
         fun_talk("Good Evening !")
-    fun_talk("I am Py-siri, Press Enter or click listen to start")  
+    fun_talk("I am Py-siri, Press Spacebar or click listen to start")  
     
 def get_command():
     rec = sr.Recognizer()
@@ -58,8 +62,9 @@ def get_command():
             print("Recognizing...")
             query = rec.recognize_google(audio, language='en-in')
             print(f"User said: {query}\n")
+            playsound('success.mp3')
         except Exception as e:
-            # print(e)
+            playsound('fail.mp3')
             print("Say that again please...")
             return "None"
         return query    
@@ -73,11 +78,12 @@ class MainWindow(QtWidgets.QMainWindow):
         self.show()
         wish_user()
         
-    def keyPressEvent(self, event):
-        if event.key() == QtCore.Qt.Key_Return:
-            self.do_command()   
+#     def keyPressEvent(self, event):
+#         if event.key() == QtCore.Qt.Key_Return:
+#             self.do_command()   
             
     def do_command(self):
+        playsound('listen.mp3')
         query = get_command().lower()
         if 'wikipedia' in query:
             fun_talk('Searching Wikipedia')
